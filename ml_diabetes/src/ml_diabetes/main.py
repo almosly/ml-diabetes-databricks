@@ -1,5 +1,9 @@
+from ml_diabetes.training.train_pipeline import run_training
+
+
 def main():
-    print("ML Diabetes Project - Entry Point")
+    print("Starting ML Diabetes Training Pipeline...")
+    run_training()
 
 
 if __name__ == "__main__":
