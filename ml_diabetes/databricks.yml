@@ -4,12 +4,13 @@ bundle:
   name: ml_diabetes
   uuid: 27e0d653-808b-4ff5-aefe-6666cb764bce
 
+
 include:
   - resources/*.yml
   - resources/*/*.yml
 
 artifacts:
-  python_artifact:
+  default:
     type: whl
     build: uv build --wheel
 
@@ -30,6 +31,7 @@ targets:
     default: true
     workspace:
       host: https://dbc-cff65afa-2f92.cloud.databricks.com
+      profile: dbc-cff65afa-2f92
     variables:
       catalog: training
       schema: ${workspace.current_user.short_name}
@@ -37,6 +39,7 @@ targets:
     mode: production
     workspace:
       host: https://dbc-cff65afa-2f92.cloud.databricks.com
+      profile: dbc-cff65afa-2f92
       # We explicitly deploy to /Workspace/Users/wafa.almosly@gmail.com to make sure we only have a single copy.
       root_path: /Workspace/Users/wafa.almosly@gmail.com/.bundle/${bundle.name}/${bundle.target}
     variables:
